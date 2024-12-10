@@ -5,7 +5,10 @@
 // most commonly used data structure for handling collections of data in Go.
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	fmt.Println("Welcome to slices in golang")
@@ -27,5 +30,30 @@ func main() {
 	// get particular range of data in slice
 	slice1 = append(slice1[1:3])
 	fmt.Println(slice1)
+
+	hightScores := make([]int, 4)
+
+	hightScores[0] = 111
+
+	hightScores[1] = 112
+
+	hightScores[2] = 113
+
+	hightScores[3] = 114
+	// hightScores[4] = 115 error occure
+	hightScores = append(hightScores, 116, 115)
+	fmt.Println(hightScores)
+
+	sort.Ints(hightScores)
+	fmt.Println("after sorting", hightScores)
+	fmt.Println("is highScore sorted:", sort.IntsAreSorted(hightScores))
+
+	//how to remove value from slices based on index
+
+	var courses = []string{"reactjs", "javascript", "swift", "ruby"}
+	fmt.Println("course are: ", courses)
+	index := 2
+	courses = append(courses[:index], courses[index+1:]...)
+	fmt.Println(courses)
 
 }
